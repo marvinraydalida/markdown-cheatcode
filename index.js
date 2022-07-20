@@ -1,4 +1,4 @@
-const origin = location.origin;
+const origin = location.href;
 const topics = ["Vanilla", "Node", "React"];
 const topicList = document.getElementById("topic-id");
 
