@@ -1,5 +1,4 @@
 const origin = location.href;
-console.log(origin)
 const topics = ["Vanilla", "Node", "React"];
 const topicList = document.getElementById("topic-id");
 
@@ -15,7 +14,7 @@ fetch(origin + "/cheatcode.json")
             data[topic].forEach(content => {
                 currentTopicList.appendChild(createContent());
                 currentTopicList.lastElementChild.innerHTML = `
-                <a href="${origin}/${topic}/${content}.md">${content}</a>
+                <a href="${origin}${topic}/${content}.md">${content}</a>
                 `;
             });
         });
