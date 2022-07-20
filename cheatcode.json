@@ -12,5 +12,7 @@
         "npm",
         "express"
     ],
-    "React": []
+    "React": [
+        "basics"
+    ]
 }
