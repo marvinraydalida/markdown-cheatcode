@@ -10,9 +10,13 @@
     "Node":[
         "basics",
         "npm",
-        "express"
+        "express",
+        "template-engines",
+        "mvc",
+        "dynamic-routing"
     ],
     "React": [
-        "basics"
+        "basics",
+        "states"
     ]
 }

@@ -12,7 +12,7 @@ npm start
 Create a `components` folder inside the `src` folder. After that create a `JavaScript` file inside of the `components`folder. The naming convention would be every first word is capital casing e.g. `NamingConvention.js`
 
 **ExpenseItem.js**
-```jsx
+```javascript
 function ExpenseItem(){
     return <h1>Simple Component</h1>
 }
@@ -20,7 +20,7 @@ function ExpenseItem(){
 export default ExpenseItem;
 ```
 **App.js**
-```jsx
+```javascript
 import ExpenseItem from './components/ExpenseItem';
 
 function App() {
@@ -39,7 +39,7 @@ export default App;
 The following code would not work a `component` should only return one root element, so it is best to wrap them by a single element.
 
 **Before**
-```jsx
+```javascript
 function ExpenseItem(){
     return (
         <h1>Simple Component</h1>
@@ -52,7 +52,7 @@ export default ExpenseItem;
 
 
 **After**
-```jsx
+```javascript
 function ExpenseItem() {
     return (
         <div>
@@ -70,7 +70,7 @@ export default ExpenseItem;
 Inside the `components`folder create a `css` file with the same name to the `component` you're going to style.
 
 **Importing CSS**
-```jsx
+```javascript
 import './ExpenseItem.css';
 
 function ExpenseItem() {
@@ -94,7 +94,7 @@ export default ExpenseItem;
 
 We can assign value to constant variables before we return the component. To access the `const` variables we simply use `{}` and place the variable name inside of them.
 
-```jsx
+```javascript
 import './ExpenseItem.css';
 
 function ExpenseItem() {
@@ -121,7 +121,7 @@ export default ExpenseItem;
 Props are used to pass data across props.
 
 **App.js**
-```jsx
+```javascript
 import ExpenseItem from './components/ExpenseItem';
 
 function App() {
@@ -155,7 +155,7 @@ export default App;
 ```
 
 **ExpenseItem.js**
-```jsx
+```javascript
 import './ExpenseItem.css';
 
 function ExpenseItem(props) {
@@ -178,7 +178,7 @@ The attribute passed in `ExpenseItem` component will be stored in one object and
 
 ## JavaScript logic inside component
 
-```jsx
+```javascript
 import './ExpenseItem.css';
 
 function ExpenseItem(props) {
@@ -210,7 +210,7 @@ We can further split our `components` into more.
 
 **ExpenseDate.js**
 
-```jsx
+```javascript
 import './ExpenseDate.css';
 
 function ExpenseDate(props) {
@@ -232,7 +232,7 @@ export default ExpenseDate;
 ```
 
 **ExpenseItem.js**
-```jsx
+```javascript
 import ExpenseDate from './ExpenseDate';
 import './ExpenseItem.css';
 
@@ -260,7 +260,7 @@ As you can see we created a new component called `ExpenseDate` and imported it t
 We can create `component` wrapper as well and reuse some styling.
 
 **Card.js**
-```jsx
+```javascript
 import './Card.css';
 
 function Card(props){
@@ -277,7 +277,7 @@ If you look at the `className` we are including 2 classes from 2 `css` files. Th
 **NOTE:** The `props.children` is a reserved named indicating all elements and component within another component.
 
 **Expenses.js**
-```jsx
+```javascript
 import ExpenseItem from './ExpenseItem';
 import Card from './Card';
 import './Expenses.css';
