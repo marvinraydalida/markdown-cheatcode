@@ -1,4 +1,5 @@
 
+
 # Dynamic Content
 
 ## Templating Engines
@@ -34,21 +35,22 @@ res.render('viewName',{title: "some title", age: 4});
 ```
 
 **EJS**
-```
+
+```html
 <h1><%= title %></h1>
 ```
 
 **EJS If-else statement**
-```javascript
+```html
 <ul>
 	Products
 	<% if(prods.length > 0){ %>
-		<% prods.forEach(prod => {%>
+		<% prods.forEach(prod => { %>
 			<li>
 				<%= prod.title %>
             </li>
         <% }) %>    
-        <% } else {%>
+        <% } else { %>
             <h1>No product available</h1>
     <% } %>
 </ul>
@@ -66,7 +68,7 @@ which is a request body.
 It is used to divide content of views. It is also good for code reusability across different `views`. Inside the `views` folder create another folder called `includes`. 
 
 **heads.ejs**
-```
+```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -81,7 +83,7 @@ It is used to divide content of views. It is also good for code reusability acro
 ```
 
 **another-route.ejs**
-```
+```html
 <%- include('includes/head.ejs') %>
 
 <body>
