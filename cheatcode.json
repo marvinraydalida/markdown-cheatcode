@@ -11,12 +11,18 @@
         "basics",
         "npm",
         "express",
-        "template-engines",
+        "templateEngines",
         "mvc",
-        "dynamic-routing"
+        "dynamic-routing",
+        "sql",
+        "mongodb",
+        "mongoose"
     ],
     "React": [
         "basics",
-        "states"
+        "states",
+        "render",
+        "styling",
+        "fragments"
     ]
 }
