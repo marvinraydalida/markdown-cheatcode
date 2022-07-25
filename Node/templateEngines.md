@@ -39,7 +39,7 @@ res.render('viewName',{title: "some title", age: 4});
 ```
 
 **EJS If-else statement**
-```
+```javascript
 <ul>
 	Products
 	<% if(prods.length > 0){ %>
