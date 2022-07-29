@@ -9,6 +9,7 @@
     ],
     "Node":[
         "basics",
+	    "node-packages",
         "npm",
         "express",
         "templateEngines",
@@ -16,13 +17,19 @@
         "dynamic-routing",
         "sql",
         "mongodb",
-        "mongoose"
+        "mongoose",
+	    "node-packages"
     ],
     "React": [
         "basics",
         "states",
         "render",
         "styling",
-        "fragments"
+        "fragments",
+	    "hooks",
+	    "optimization",
+	    "http",
+	    "custom-hooks",
+	    "redux"
     ]
 }

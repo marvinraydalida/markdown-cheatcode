@@ -180,3 +180,5 @@ export default SomeComponent;
 ```
 
 Once clicked the console will log the value of the referenced element, in our case the value of the input text.
+
+[**FORWARDING REF**](https://reactjs.org/docs/forwarding-refs.html) - Refs won't work in a component just it will just work in an `HTML` element.
