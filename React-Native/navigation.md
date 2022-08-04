@@ -161,7 +161,7 @@ route.params.someData;
 **Stack.Navigator options**
 ```javascript
 <Stack.Navigator
-    screenOptions={{
+    screenOptions={ {
         title: "Welcome",
         headerStyle: { backgroundColor: "black" },
         contentStyle: { backgroundColor: "black" },
@@ -178,7 +178,7 @@ Default to every screen.
     <Stack.Screen
         name="Home"
         component={Home}
-        options={{
+        options={ {
             title: "Welcome",
             headerStyle: { backgroundColor: "black" },
             contentStyle: { backgroundColor: "black" },
@@ -253,7 +253,7 @@ export default Home;
     <Stack.Screen
         name="Home"
         component={Home}
-        options={{
+        options={ {
             headerRight: () => {
                 return <Button title="Like" onPress={someHandler} />;
             },
@@ -320,7 +320,7 @@ function SomeComponent(){
   	<Drawer.Navigator>
     	<Drawer.Screen name="Feed" 
     	component={Feed} 
-    	options={{
+    	options={ {
           headerStyle: {
             backgroundColor: 'black'
           }
@@ -337,7 +337,7 @@ export default SomeComponent;
 ```javascript
 <NavigationContainer>
     <Drawer.Navigator
-        screenOptions={{
+        screenOptions={ {
             headerStyle: {
                 backgroundColor: "black",
             },
@@ -360,7 +360,7 @@ import { Ionicons } from '@expo/vector-icons';
         <Drawer.Screen
             name="Feed"
             component={Feed}
-            options={{
+            options={ {
                 drawerIcon: ({ color, size }) => (
                     <Ionicons name="home" color={color} size={size} />
                 ),
@@ -440,7 +440,7 @@ function SomeComponent() {
                 <Stack.Screen
                     name="Home"
                     component={DrawerNavigator}
-                    options={{
+                    options={ {
                         headerShown: false,
                     }}
                 />
@@ -461,7 +461,7 @@ As you can see below we used `DrawerNavigator` function to return a `Drawer` nav
 <Stack.Screen
     name="Home"
     component={DrawerNavigator}
-    options={{
+    options={ {
         headerShown: false,
     }}
 />;
