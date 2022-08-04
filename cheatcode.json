@@ -30,6 +30,14 @@
 	    "optimization",
 	    "http",
 	    "custom-hooks",
-	    "redux"
+	    "redux",
+        "router"
+    ],
+    "React-Native": [
+        "basics",
+        "core",
+        "layout",
+        "responsive",
+        "navigation"
     ]
 }

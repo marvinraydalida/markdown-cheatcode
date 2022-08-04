@@ -296,3 +296,176 @@ export const cotherActions = otherSlice.actions;
 
 export default otherSlice.reducer;
 ```
+
+# Advanced Redux
+
+## Action Creator 
+
+The main purpose of action creator is to handle `async` task, such as HTTP requests.
+
+**counter.js** inside store folder
+
+```javascript
+import {createSlice} from '@reduxjs/toolkit';
+
+const counterSlice = createSlice({
+  name: "counter",
+  initialState: {
+    counter: 1,
+    title: ''
+  },
+  reducers:{
+    increment(state){
+      state.counter++;
+    },
+    decrement(state){
+      state.counter--;
+    },
+    someAction(state, action){
+      state.title = action.payload;
+    }
+  }
+});
+
+export const action = (count) => {
+  return async (dispatch) => {
+    const response = await fetch(`https://jsonplaceholder.typicode.com/posts/${count}`);
+    const data = await response.json();
+    dispatch(counterSlice.actions.someAction(data.title));
+  };
+}
+
+export const {increment, decrement} = counterSlice.actions;
+
+export default counterSlice.reducer;
+```
+
+The function `action` is an action creator.
+
+**index.js** inside store folder:
+
+```javascript
+import {configureStore} from "@reduxjs/toolkit";
+
+import counterReducer from './counter';
+
+const store = configureStore({
+  reducer: {
+    counter: counterReducer
+  }
+});
+
+export default store;
+```
+
+**App.js**
+```javascript
+import "./styles.css";
+
+import ChildComponent from './components/ChildComponent';
+
+import {Provider} from 'react-redux';
+import store from './store/index';
+
+export default function App() {
+  return (
+    <Provider store={store}>
+      <ChildComponent />
+    </Provider>
+  );
+}
+```
+**ChildComponent.js**
+```javascript
+import { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { increment, decrement, action } from "../store/counter";
+
+const ChildCounter = () => {
+  const dispatch = useDispatch();
+  const count = useSelector((state) => state.counter.counter);
+  const title = useSelector((state) => state.counter.title);
+
+  useEffect(() => {
+    dispatch(action(count));
+  }, [count, dispatch]);
+
+  function addHandler() {
+    dispatch(increment());
+  }
+
+  function minusHandler() {
+    dispatch(decrement());
+  }
+
+  return (
+    <>
+      <h1>{count}</h1>
+      <button onClick={addHandler}>+</button>
+      <button onClick={minusHandler}>-</button>
+      <p>{title}</p>
+    </>
+  );
+};
+
+export default ChildCounter;
+```
+Inside `useEffect` we dispatch an action creator called `action`. After that it will return an `async` function that has a dispatch as an argument so that we can use dispatch the real action.
+
+### You can make a separate folder for actions:
+
+**counterActions.js** inside actions folder:
+```javascript
+import {someAction} from '../store/counter';
+
+export const getTitle = (count) => {
+  return async (dispatch) => {
+    const response = await fetch(
+      `https://jsonplaceholder.typicode.com/posts/${count}`
+    );
+    const data = await response.json();
+    dispatch(someAction(data.title));
+  };
+}
+```
+
+**ChildComponent.js**
+
+```javascript
+import { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { increment, decrement} from "../store/counter";
+
+//From actions
+import {getTitle} from '../actions/counterActions';
+
+const ChildCounter = () => {
+  const dispatch = useDispatch();
+  const count = useSelector((state) => state.counter.counter);
+  const title = useSelector((state) => state.counter.title);
+
+  useEffect(() => {
+	 //Use the getTitle action creator
+    dispatch(getTitle(count));
+  }, [count, dispatch]);
+
+  function addHandler() {
+    dispatch(increment());
+  }
+
+  function minusHandler() {
+    dispatch(decrement());
+  }
+
+  return (
+    <>
+      <h1>{count}</h1>
+      <button onClick={addHandler}>+</button>
+      <button onClick={minusHandler}>-</button>
+      <p>{title}</p>
+    </>
+  );
+};
+
+export default ChildCounter;
+```
